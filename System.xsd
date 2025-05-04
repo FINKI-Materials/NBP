@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <!-- Главниот елемент -->
+    <xs:element name="System">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Client" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NAME" type="xs:string"/>
+                                        <xs:element name="SURNAME" type="xs:string"/>
+                                        <xs:element name="ADDRESS" minOccurs="0" type="addressType"/>
+                                        <xs:element name="EMAIL" type="emailType"/>
+                                        <xs:element name="PHONE_NUMBER" type="phoneType"/>
+                                        <xs:element name="Rents">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Rent" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="FROM_DATE" type="xs:string"/>
+                                                                <xs:element name="RETURN_STATE" type="returnStateType"/>
+                                                                <xs:element name="RETURN_DATE" type="xs:string"/>
+                                                                <xs:element name="CD_ID" type="xs:string"/>
+                                                                <xs:element name="Singer" minOccurs="0">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="id" type="xs:string" use="required"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="Artists">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Artist" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NAME" type="xs:string"/>
+                                        <xs:element name="COUNTRY" type="xs:string"/>
+                                        <xs:element name="GENRE" type="xs:string"/>
+                                        <xs:element name="Albums" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Album" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="NAME" type="xs:string"/>
+                                                                <xs:element name="RELEASE_YEAR" type="xs:short"/>
+                                                                <xs:element name="PRICE" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="CDs" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="CD" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="STATE" type="xs:string"/>
+                                                                <xs:element name="OCCUPIED" type="occupiedType"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="Singers">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Singer" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="YEAR_STARTED_PERFORMING" type="xs:short"/>
+                                        <xs:element name="YEAR_OF_BIRTH" type="xs:short"/>
+                                        <xs:element name="Albums" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Album" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="NAME" type="xs:string"/>
+                                                                <xs:element name="RELEASE_YEAR" type="xs:short"/>
+                                                                <xs:element name="PRICE" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="CDs" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="CD" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="STATE" type="xs:string"/>
+                                                                <xs:element name="OCCUPIED" type="occupiedType"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Rents" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Rent" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="FROM_DATE" type="xs:string"/>
+                                                                <xs:element name="RETURN_STATE" type="returnStateType"/>
+                                                                <xs:element name="RETURN_DATE" type="xs:string"/>
+                                                                <xs:element name="Client">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="NAME" type="xs:string"/>
+                                                                            <xs:element name="SURNAME" type="xs:string"/>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="DJs">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DJ" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="YEAR_STARTED_PERFORMING" type="xs:short"/>
+                                        <xs:element name="NET_WORTH" type="xs:string"/>
+                                        <xs:element name="YEAR_OF_BIRTH" type="xs:short"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- ==== ДЕФИНИЦИИ НА ТИПОВИ СО РЕСТРИКЦИИ ==== -->
+    
+    <!-- Тип за OCCUPIED -->
+    <xs:simpleType name="occupiedType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="0|1|2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Тип за RETURN_STATE -->
+    <xs:simpleType name="returnStateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="functional"/>
+            <xs:enumeration value="slightly damaged"/>
+            <xs:enumeration value="damaged"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Тип за EMAIL -->
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Тип за PHONE_NUMBER -->
+    <xs:simpleType name="phoneType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="75[0-9]-[1-9][0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Тип за ADDRESS -->
+    <xs:simpleType name="addressType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Za-z ]+ St\.\d{1,2})|([A-Za-z]+ [0-9]+)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>
